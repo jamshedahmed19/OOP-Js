@@ -1,36 +1,35 @@
-//Object Literals
-let user = {
-  //Properties
-  name: "Jamshed Ahmed",
-  email: "jamsheda4ahmed786@gmail.com",
-  age: 19,
-  //Methods
+//Classes
+class User {
+  constructor(name, email) {
+    this.name = name;
+    this.email = email;
+    this.score = 0;
+  }
+  UpdateScore() {
+    this.score++;
+    console.log(this.name, "score is", this.score);
+    return this;
+  }
   login() {
     console.log(this.email, "is logged in");
-  },
+    return this;
+  }
   logout() {
-    console.log(this.email, "is logged out");
-  },
-};
-//accessing method
-user.login();
-//accessing property
-console.log(user.name);
-//Dynamic Accessing
-console.log(user["email"]);
-let property = "age";
-console.log(user[property]);
-property = "email";
-console.log(user[property]);
-console.log(user);
-//Updating Properties
-user.name = "Hammad";
-console.log(user.name);
-console.log(user);
-//we can also add properties/methods that does'nt exist But, it's not recommended
-user.dob = "21/02/2001";
-console.log(user.dob)
-console.log(user)
-//methods
-user.percentage = function(){}
-console.log(user)
+    console.log(this.email, "is logged in");
+    return this;
+  }
+}
+
+let userOne = new User("Jamshed", "jamsheda4ahmed786@gmail.com");
+let userTwo = new User("Hammad", "hammadwasseem@gmail.com");
+
+console.log(userOne, userTwo);
+userTwo.login();
+userOne.logout();
+console.clear();
+//Method chaining
+//we can not chain methods of classes if it doen't return anything
+//So in order to chain methods we have to return this keyword
+console.log("Method Chaining");
+userOne.login().UpdateScore().logout().UpdateScore();
+userTwo.login().UpdateScore().logout().UpdateScore();
